@@ -64,6 +64,19 @@ export const NavSearch = styled.input.attrs({placeholder: '搜索'})`
     &.focused {
       width: 250px;
     }
+    &.slide-enter {
+    width: 160px;
+    transition: all .2s ease-out;
+  }
+  &.slide-enter-active {
+    width: 250px;
+  }
+  &.slide-exit {
+    transition: all .2s ease-out;
+  }
+  &.slide-exit-active {
+    width: 160px;
+  }
 `;
 
 export const SearchWrapper = styled.div`
@@ -82,19 +95,6 @@ export const SearchWrapper = styled.div`
       background: #777;
       color: #fff;
     }
-  }
-  .slide-enter {
-    width: 160px;
-    transition: all .2s ease-out;
-  }
-  .slide-enter-active {
-    width: 250px;
-  }
-  .slide-exit {
-    transition: all .2s ease-out;
-  }
-  .slide-exit-active {
-    width: 160px;
   }
 `;
 
