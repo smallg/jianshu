@@ -2,6 +2,11 @@ import * as actionTypes from "./actionTypes";
 import { fromJS } from 'immutable';
 import axios from 'axios';
 
+const changeList = (data) => ({
+    type: actionTypes.CHANGE_LIST,
+    data: fromJS(data)
+});
+
 export const getInputFocusAction = () => ({
     type: actionTypes.INPUT_FOCUS
 });
@@ -10,10 +15,6 @@ export const getInputBlurAction = () => ({
     type: actionTypes.INPUT_BLUR
 });
 
-const changeList = (data) => ({
-    type: actionTypes.CHANGE_LIST,
-    data: fromJS(data)
-});
 // use redux-thunk
 export const getSearchList = () => {
     return (dispatch) => {

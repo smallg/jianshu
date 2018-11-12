@@ -21,14 +21,15 @@ import {
 class Header extends Component {
 
     getListArea() {
-        if (this.props.focused) {
+        const {focused, list} = this.props;
+        if (focused) {
             return (
                     <SearchInfo>
                         <SearchInfoTitle>热门搜索
                             <SearchInfoSwitch>换一批</SearchInfoSwitch>
                         </SearchInfoTitle>
                         <SearchInfoList>
-                            {this.props.list.map((item)=>{
+                            {list.map((item) => {
                                 return <SearchInfoItem key={item}>{item}</SearchInfoItem>
                             })}
                         </SearchInfoList>
@@ -37,9 +38,10 @@ class Header extends Component {
         } else {
             return null;
         }
-    };
+    }
 
     render() {
+        const {focused, handleInputFocus, handleInputBlur} = this.props;
         return (
                 <HeaderWrapper>
                     <LimitWidth>
@@ -54,12 +56,12 @@ class Header extends Component {
                             <NavItem className='right'>登录</NavItem>
                             <NavItem className='right'><i className='iconfont'>&#xe636;</i></NavItem>
                             <SearchWrapper>
-                                <CSSTransition in={this.props.focused} timeout={200} classNames='slide'>
-                                    <NavSearch className={this.props.focused ? 'focused' : ''}
-                                               onFocus={this.props.handleInputFocus}
-                                               onBlur={this.props.handleInputBlur}></NavSearch>
+                                <CSSTransition in={focused} timeout={200} classNames='slide'>
+                                    <NavSearch className={focused ? 'focused' : ''}
+                                               onFocus={handleInputFocus}
+                                               onBlur={handleInputBlur}/>
                                 </CSSTransition>
-                                <i className={this.props.focused ? 'focused iconfont' : 'iconfont'}>&#xe60c;</i>
+                                <i className={focused ? 'focused iconfont' : 'iconfont'}>&#xe60c;</i>
                                 {this.getListArea()}
                             </SearchWrapper>
                         </Nav>
@@ -71,7 +73,7 @@ class Header extends Component {
 
 const initMapStateToProps = (state) => {
     return {
-        focused: state.getIn(['header', 'focused']),//state.get('header').get('focused')
+        focused: state.getIn(['header', 'focused']),
         list: state.getIn(['header', 'list'])
     };
 };
