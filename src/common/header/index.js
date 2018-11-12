@@ -21,17 +21,22 @@ import {
 class Header extends Component {
 
     getListArea() {
-        const {focused, list} = this.props;
-        if (focused) {
+        const {focused, list, page, totalPage, mouseIn, handleMouseEnter, handleMouseLeave, handleChangePage} = this.props;
+        const jsList = list.toJS();
+        const pageList = [];
+        if (jsList.length) {
+            for (let i = ((page - 1) * 10); i < (page === totalPage ? jsList.length : page * 10); i++) {
+                pageList.push(<SearchInfoItem key={jsList[i]}>{jsList[i]}</SearchInfoItem>)
+            }
+        }
+        if (focused || mouseIn) {
             return (
-                    <SearchInfo>
+                    <SearchInfo onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
                         <SearchInfoTitle>热门搜索
-                            <SearchInfoSwitch>换一批</SearchInfoSwitch>
+                            <SearchInfoSwitch onClick={() => handleChangePage(page, totalPage)}>换一批</SearchInfoSwitch>
                         </SearchInfoTitle>
                         <SearchInfoList>
-                            {list.map((item) => {
-                                return <SearchInfoItem key={item}>{item}</SearchInfoItem>
-                            })}
+                            {pageList}
                         </SearchInfoList>
                     </SearchInfo>
             );
@@ -74,7 +79,10 @@ class Header extends Component {
 const initMapStateToProps = (state) => {
     return {
         focused: state.getIn(['header', 'focused']),
-        list: state.getIn(['header', 'list'])
+        list: state.getIn(['header', 'list']),
+        page: state.getIn(['header', 'page']),
+        totalPage: state.getIn(['header', 'totalPage']),
+        mouseIn: state.getIn(['header', 'mouseIn'])
     };
 };
 
@@ -86,6 +94,19 @@ const initMapDispatchToProps = (dispatch) => {
         },
         handleInputBlur() {
             dispatch(actionCreators.getInputBlurAction());
+        },
+        handleMouseEnter() {
+            dispatch(actionCreators.getMouseEnterAction());
+        },
+        handleMouseLeave() {
+            dispatch(actionCreators.getMouseLeaveAction());
+        },
+        handleChangePage(page, totalPage) {
+            let currentPage = 1;
+            if (page < totalPage) {
+                currentPage = page + 1;
+            }
+            dispatch(actionCreators.getChangePageAction(currentPage));
         }
     }
 };

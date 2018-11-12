@@ -4,7 +4,8 @@ import axios from 'axios';
 
 const changeList = (data) => ({
     type: actionTypes.CHANGE_LIST,
-    data: fromJS(data)
+    data: fromJS(data),
+    totalPage: Math.ceil(data.length / 10)
 });
 
 export const getInputFocusAction = () => ({
@@ -13,6 +14,19 @@ export const getInputFocusAction = () => ({
 
 export const getInputBlurAction = () => ({
     type: actionTypes.INPUT_BLUR
+});
+
+export const getMouseEnterAction = () => ({
+    type: actionTypes.MOUSE_ENTER
+});
+
+export const getMouseLeaveAction = () => ({
+    type: actionTypes.MOUSE_LEAVE
+});
+
+export const getChangePageAction = (currentPage) => ({
+    type: actionTypes.CHANGE_PAGE,
+    page: currentPage
 });
 
 // use redux-thunk
