@@ -13,7 +13,7 @@ export const LimitWidth = styled.div`
     margin: 0 auto;
 `;
 
-export const Logo = styled.a.attrs({href: '/'})`
+export const Logo = styled.div`
     float: left;
     width: 100px;
     height: 58px;
@@ -33,6 +33,7 @@ export const NavItem = styled.div`
     line-height: 56px;
     padding:0 15px;
     font-size: 17px;
+    cursor: pointer;
     &.left{
     float: left;
     }
@@ -105,6 +106,7 @@ export const SearchInfo = styled.div`
   width: 250px;
   padding: 0 20px;
   box-shadow: 0 0 8px rgba(0,0,0, .2);
+  background: #fff;
 `;
 
 export const SearchInfoTitle = styled.div`
