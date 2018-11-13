@@ -82,7 +82,7 @@ export const NavSearch = styled.input.attrs({placeholder: '搜索'})`
 export const SearchWrapper = styled.div`
   float: left;
   position: relative;
-  .iconfont {
+  .zoom {
     width: 30px;
     height: 30px;
     border-radius: 15px;
@@ -118,6 +118,15 @@ export const SearchInfoTitle = styled.div`
 export const SearchInfoSwitch = styled.div`
   float: right;
   font-size: 13px;
+  cursor: pointer;
+  .spin {
+    display: block;
+    float:left;
+    font-size: 12px;
+    margin-right: 2px;
+    transition: all .3s ease-in;
+    transform-origin: center center;
+  }
 `;
 
 export const SearchInfoList = styled.div`
@@ -135,9 +144,7 @@ export const SearchInfoItem = styled.a`
   border: 1px solid #ddd;
   color: #333;
   border-radius: 3px;
-  &.hover {
-    //cursor: ;
-  }
+  cursor: pointer;
 `;
 
 export const ButtonGroup = styled.div`

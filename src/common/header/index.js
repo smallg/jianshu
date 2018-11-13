@@ -33,7 +33,10 @@ class Header extends Component {
             return (
                     <SearchInfo onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
                         <SearchInfoTitle>热门搜索
-                            <SearchInfoSwitch onClick={() => handleChangePage(page, totalPage)}>换一批</SearchInfoSwitch>
+                            <SearchInfoSwitch onClick={() => handleChangePage(page, totalPage, this.spinIcon)}>
+                                <i className="iconfont spin" ref={(icon) => {
+                                    this.spinIcon = icon
+                                }}>&#xe851;</i>换一批</SearchInfoSwitch>
                         </SearchInfoTitle>
                         <SearchInfoList>
                             {pageList}
@@ -46,7 +49,7 @@ class Header extends Component {
     }
 
     render() {
-        const {focused, handleInputFocus, handleInputBlur} = this.props;
+        const {focused, list, handleInputFocus, handleInputBlur} = this.props;
         return (
                 <HeaderWrapper>
                     <LimitWidth>
@@ -63,10 +66,12 @@ class Header extends Component {
                             <SearchWrapper>
                                 <CSSTransition in={focused} timeout={200} classNames='slide'>
                                     <NavSearch className={focused ? 'focused' : ''}
-                                               onFocus={handleInputFocus}
+                                               onFocus={() => {
+                                                   handleInputFocus(list)
+                                               }}
                                                onBlur={handleInputBlur}/>
                                 </CSSTransition>
-                                <i className={focused ? 'focused iconfont' : 'iconfont'}>&#xe60c;</i>
+                                <i className={focused ? 'focused iconfont zoom' : 'iconfont zoom'}>&#xe60c;</i>
                                 {this.getListArea()}
                             </SearchWrapper>
                         </Nav>
@@ -88,8 +93,10 @@ const initMapStateToProps = (state) => {
 
 const initMapDispatchToProps = (dispatch) => {
     return {
-        handleInputFocus() {
-            dispatch(actionCreators.getSearchList());
+        handleInputFocus(list) {
+            if (list.size===0){
+                dispatch(actionCreators.getSearchList());
+            }
             dispatch(actionCreators.getInputFocusAction());
         },
         handleInputBlur() {
@@ -101,7 +108,9 @@ const initMapDispatchToProps = (dispatch) => {
         handleMouseLeave() {
             dispatch(actionCreators.getMouseLeaveAction());
         },
-        handleChangePage(page, totalPage) {
+        handleChangePage(page, totalPage, spin) {
+            const originAngle = spin.style.transform.replace(/[^0-9]/ig, '');
+            spin.style.transform = `rotate(${parseInt(originAngle || 0) + 360}deg)`;
             let currentPage = 1;
             if (page < totalPage) {
                 currentPage = page + 1;
