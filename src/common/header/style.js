@@ -156,7 +156,7 @@ export const ButtonGroup = styled.div`
     margin-top: 9px;
 `;
 
-export const Button = styled.a`
+export const Button = styled.div`
     float:left;
     padding: 0 20px;
     line-height: 38px;

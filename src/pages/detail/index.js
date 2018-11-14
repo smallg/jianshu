@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import { actionCreators } from './store';
+import { withRouter } from 'react-router-dom';
 import { DetailWrapper, Header, Content } from './style';
 
 class Detail extends PureComponent {
@@ -9,7 +10,6 @@ class Detail extends PureComponent {
     }
 
     render() {
-        console.log(this.props.match.params.id);
         const {title, content} = this.props;
         return (
                 <DetailWrapper>
@@ -33,4 +33,4 @@ const initMapDispatchToProps = (dispatch) => {
     }
 };
 
-export default connect(initMapStateToProps, initMapDispatchToProps)(Detail);
+export default connect(initMapStateToProps, initMapDispatchToProps)(withRouter(Detail));
