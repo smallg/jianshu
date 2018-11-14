@@ -3,7 +3,7 @@ import { CSSTransition } from 'react-transition-group';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { actionCreators } from './store'
-import { actionCreators as loginActionCreators} from '../../pages/login/store';
+import { actionCreators as loginActionCreators } from '../../pages/login/store';
 import {
     HeaderWrapper,
     LimitWidth, Logo,
@@ -60,7 +60,9 @@ class Header extends Component {
                         </Link>
                         <ButtonGroup>
                             <Button className='reg'>注册</Button>
-                            <Button className='writing'><i className='iconfont'>&#xe601;</i>写文章</Button>
+                            <Link to='/write'>
+                                <Button className='writing'><i className='iconfont'>&#xe601;</i>写文章</Button>
+                            </Link>
                         </ButtonGroup>
                         <Nav className='container'>
                             <Link to='/'>
@@ -129,7 +131,7 @@ const initMapDispatchToProps = (dispatch) => {
             }
             dispatch(actionCreators.getChangePageAction(currentPage));
         },
-        handleLogout(){
+        handleLogout() {
             dispatch(loginActionCreators.logout())
         }
     }
