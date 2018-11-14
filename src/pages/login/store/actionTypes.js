@@ -1,0 +1,1 @@
+export const CHANGE_LOGIN_STATUE = 'login/CHANGE_LOGIN_STATUE';

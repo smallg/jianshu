@@ -83,6 +83,7 @@ export const NavSearch = styled.input.attrs({placeholder: '搜索'})`
 export const SearchWrapper = styled.div`
   float: left;
   position: relative;
+  z-index: 1;
   .zoom {
     width: 30px;
     height: 30px;

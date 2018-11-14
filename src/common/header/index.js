@@ -3,6 +3,7 @@ import { CSSTransition } from 'react-transition-group';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { actionCreators } from './store'
+import { actionCreators as loginActionCreators} from '../../pages/login/store';
 import {
     HeaderWrapper,
     LimitWidth, Logo,
@@ -50,7 +51,7 @@ class Header extends Component {
     }
 
     render() {
-        const {focused, list, handleInputFocus, handleInputBlur} = this.props;
+        const {focused, list, login, handleInputFocus, handleInputBlur, handleLogout} = this.props;
         return (
                 <HeaderWrapper>
                     <LimitWidth>
@@ -66,7 +67,12 @@ class Header extends Component {
                                 <NavItem className='left active'>首页</NavItem>
                             </Link>
                             <NavItem className='left'>下载App</NavItem>
-                            <NavItem className='right'>登录</NavItem>
+                            {
+                                login ?
+                                        <NavItem className='right' onClick={handleLogout}>退出</NavItem> :
+                                        <Link to='/login'><NavItem className='right'>登录</NavItem></Link>
+                            }
+
                             <NavItem className='right'><i className='iconfont'>&#xe636;</i></NavItem>
                             <SearchWrapper>
                                 <CSSTransition in={focused} timeout={200} classNames='slide'>
@@ -92,7 +98,8 @@ const initMapStateToProps = (state) => {
         list: state.getIn(['header', 'list']),
         page: state.getIn(['header', 'page']),
         totalPage: state.getIn(['header', 'totalPage']),
-        mouseIn: state.getIn(['header', 'mouseIn'])
+        mouseIn: state.getIn(['header', 'mouseIn']),
+        login: state.getIn(['login', 'login'])
     };
 };
 
@@ -121,6 +128,9 @@ const initMapDispatchToProps = (dispatch) => {
                 currentPage = page + 1;
             }
             dispatch(actionCreators.getChangePageAction(currentPage));
+        },
+        handleLogout(){
+            dispatch(loginActionCreators.logout())
         }
     }
 };
