@@ -1,3 +1,4 @@
 export const CHANGE_HOME_DATA = 'home/CHANGE_HOME_DATA';
 export const ADD_ARTICLE_DATA = 'home/ADD_ARTICLE_DATA';
 export const TOGGLE_SCROLL_SHOW = 'home/TOGGLE_SCROLL_SHOW';
+export const CHANGE_WRITER_DATA = 'home/CHANGE_WRITER_DATA';

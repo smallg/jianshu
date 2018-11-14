@@ -11,6 +11,7 @@ import DownloadApp from './components/DownloadApp';
 class Home extends PureComponent {
     componentDidMount() {
         this.props.getHomeData();
+        this.props.getWriterData();
         this.bindEvents();
     }
 
@@ -39,7 +40,7 @@ class Home extends PureComponent {
                         <DownloadApp/>
                         <Writer/>
                     </HomeRight>
-                    {this.props.showScrollTop ? <BackTop onClick={this.handleScrollTop}>顶部</BackTop> : null}
+                    {this.props.showScrollTop ? <BackTop onClick={this.handleScrollTop}><i className="iconfont">&#xe691;</i></BackTop> : null}
                 </HomeWrapper>
         );
     }
@@ -53,6 +54,9 @@ const initMapDispatchToProps = (dispatch) => {
     return {
         getHomeData() {
             dispatch(actionCreators.getHomeData());
+        },
+        getWriterData() {
+            dispatch(actionCreators.getWriterList());
         },
         changeScrollTopShow() {
             if (document.documentElement.scrollTop > 100) {

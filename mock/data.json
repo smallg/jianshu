@@ -175,5 +175,52 @@
             "replyNum": 101,
             "praise": 201
         }
+    ],
+    "writer-list": [
+        {
+            "id": 2911038,
+            "slug": "45661204c0d6",
+            "nickname": "何时夕",
+            "avatar_source": "http://upload.jianshu.io/users/upload_avatars/2911038/b74f2319-64b2-4824-ad16-75ffee80bd66.jpg",
+            "total_likes_count": 2830,
+            "total_wordage": 113079,
+            "is_following_user": false
+        },
+        {
+            "id": 5951833,
+            "slug": "84f0f192eeb5",
+            "nickname": "屈冰",
+            "avatar_source": "http://upload.jianshu.io/users/upload_avatars/5951833/b8a7ec40-5911-4747-b594-c378079f0cfd.jpg",
+            "total_likes_count": 13769,
+            "total_wordage": 83733,
+            "is_following_user": false
+        },
+        {
+            "id": 14602223,
+            "slug": "b68e9e1228e5",
+            "nickname": "两都腹",
+            "avatar_source": "http://upload.jianshu.io/users/upload_avatars/14602223/3c292505-08d7-48f7-a950-e2587a045b3d.JPG",
+            "total_likes_count": 4,
+            "total_wordage": 25039,
+            "is_following_user": false
+        },
+        {
+            "id": 4774020,
+            "slug": "563b37ce1448",
+            "nickname": "漠世S",
+            "avatar_source": "http://upload.jianshu.io/users/upload_avatars/4774020/33c7b44c-5cd3-4eed-bed2-af6f87908bea.jpeg",
+            "total_likes_count": 162,
+            "total_wordage": 363058,
+            "is_following_user": false
+        },
+        {
+            "id": 9613132,
+            "slug": "7b41349b2a3c",
+            "nickname": "笔尖独白",
+            "avatar_source": "http://upload.jianshu.io/users/upload_avatars/9613132/982d3d42-3fd7-4109-9794-6a5636c238fa.jpg",
+            "total_likes_count": 134,
+            "total_wordage": 60635,
+            "is_following_user": false
+        }
     ]
 }

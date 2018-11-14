@@ -19,6 +19,11 @@ export const toggleScrollTopShow = (show) => ({
     show
 });
 
+export const changeWriterData = (data) => ({
+    type: actionTypes.CHANGE_WRITER_DATA,
+    data: fromJS(data)
+});
+
 // use redux-thunk
 export const getHomeData = () => {
     return (dispatch) => {
@@ -36,6 +41,17 @@ export const getMoreArticleList = () => {
         axios.get('http://localhost:3002/api/article-list').then((res) => {
             const data = res.data;
             dispatch(AddArticleData(data));
+        }).catch(() => {
+            console.log('error');
+        });
+    }
+};
+
+export const getWriterList = () => {
+    return (dispatch) => {
+        axios.get('http://localhost:3002/api/writer-list').then((res) => {
+            const data = res.data;
+            dispatch(changeWriterData(data));
         }).catch(() => {
             console.log('error');
         });
