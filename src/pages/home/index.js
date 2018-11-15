@@ -20,6 +20,9 @@ class Home extends PureComponent {
     }
 
     handleScrollTop() {
+        //html, body {
+        //   scroll-behavior: smooth;
+        // }
         window.scrollTo(0, 0);
     }
 

@@ -58,4 +58,8 @@ table {
 .container {
     width: 750px;
 }}
+
+html, body {
+  scroll-behavior: smooth;
+}
 `;
